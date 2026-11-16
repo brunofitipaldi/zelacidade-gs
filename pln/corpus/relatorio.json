@@ -1,0 +1,42 @@
+{
+  "documentos": {
+    "faq_zelacidade.md": {
+      "paginas": 1,
+      "secoes": 8,
+      "paragrafos": 8
+    }
+  },
+  "limpeza": {
+    "linhas_brutas": 38,
+    "cabecalhos_rodapes_removidos": 0,
+    "numeros_de_pagina_removidos": 0,
+    "hifenizacoes_corrigidas": 0,
+    "paragrafos_duplicados_removidos": 0,
+    "trechos_curtos_removidos": 0,
+    "dados_pessoais_mascarados": {
+      "[EMAIL]": 0,
+      "[CPF]": 0,
+      "[TELEFONE]": 0
+    }
+  },
+  "corpus": {
+    "texto_puro": {
+      "total": 8,
+      "treino": 8,
+      "validacao": 0
+    },
+    "perguntas_respostas": {
+      "total": 8,
+      "treino": 8,
+      "validacao": 0
+    },
+    "conversacional": {
+      "total": 8,
+      "treino": 8,
+      "validacao": 0
+    }
+  },
+  "origem_das_perguntas": {
+    "titulo": 8
+  }
+}

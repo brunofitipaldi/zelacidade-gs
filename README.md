@@ -15,7 +15,7 @@ Autor: Bruno Lanchariche Fitipaldi Lopes – RM 564129
 | --- | --- | --- | --- |
 | `app/` | Front End & Mobile Development | Interface Streamlit que integra os módulos | Em desenvolvimento |
 | `rpa/` | AI for Robotic Process Automation | Trata as detecções com Pandas, grava no SQLite e gera o e-mail para a prefeitura | Em desenvolvimento |
-| `pln/` | PLN, Chatbots & Virtual Agents | Limpa documentos e gera os 3 corpus | A fazer |
+| `pln/` | PLN, Chatbots & Virtual Agents | Limpa documentos e gera os 3 corpus | Pronto (falta rodar com os PDFs da prefeitura) |
 | `genai/` | Generative AI & Advanced Nets | Assistente que responde com base no corpus | A fazer |
 | `visao/` | Visão Computacional | Classifica fotos de problemas urbanos | A fazer |
 | `quantica/` | Computação Quântica & IA | Roadmap e exemplo de otimização de rota | A fazer |
