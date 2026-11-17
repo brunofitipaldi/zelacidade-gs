@@ -1,0 +1,177 @@
+{
+  "metricas": {
+    "modo": "extrativo",
+    "perguntas_no_escopo": 15,
+    "perguntas_fora_do_escopo": 6,
+    "acerto_busca@1": 1.0,
+    "acerto_busca@3": 1.0,
+    "cobertura_palavras": 0.933,
+    "recusa_indevida": 0.0,
+    "recusa_correta": 1.0,
+    "respostas_sem_base": 0.0
+  },
+  "casos": [
+    {
+      "pergunta": "Como eu peço o conserto de um buraco na rua?",
+      "tipo": "no escopo",
+      "resultado": "ok",
+      "score": 6.28,
+      "fonte_encontrada": "tapa_buraco_subprefeitura_ipiranga.html",
+      "resposta": "Pelo Aplicativo SP156 no celular basta selecionar \"Rua e bairro\", escolha \"Reparos em asfaltos\" e depois \"Tapa-buraco\". A solicitação também pode ser feita através do Portal SP156 ou pelo WhatsApp [TELEFONE]\n\nFonte: tapa_buraco_subprefeitura_ipiranga.html (seção \"Como solicitar o serviço?\")"
+    },
+    {
+      "pergunta": "O que preciso informar quando pedir o tapa-buraco?",
+      "tipo": "no escopo",
+      "resultado": "parcial",
+      "score": 8.28,
+      "fonte_encontrada": "tapa_buraco_subprefeitura_ipiranga.html",
+      "resposta": "Operação Tapa-Buraco no Ipiranga: Saiba como solicitar o serviço O serviço de Tapa-Buraco é uma das ações de manutenção com maior número de demandas na cidade de São Paulo - e no Ipiranga isso não é diferente. A Operação é realizada diariamente (nos períodos diurno e noturno). No bairro do Ipiranga o serviço funciona de forma dinâmica, priorizando o atendimento baseado em demandas registradas e em mapeamentos de desgaste do asfalto na região.\n\nFonte: tapa_buraco_subprefeitura_ipiranga.html (seção \"Subprefeitura Ipiranga\")"
+    },
+    {
+      "pergunta": "Qual a largura mínima da faixa livre da calçada?",
+      "tipo": "no escopo",
+      "resultado": "ok",
+      "score": 10.04,
+      "fonte_encontrada": "cartilha_calcadas_2026.pdf",
+      "resposta": "Nos casos em que a largura total da calçada não possibilitar a implantação da faixa livre mínima de 1,20 m (um metro e vinte centímetros), e não for possível a sua ampliação, poderão ser admitidas as seguintes situações atípicas: I - Onde houver interferências de mobiliário urbano ou de guias rebaixadas para acesso de veículos, deverá ser respeitada a largura mínima de 90 cm (noventa centímetros) para a faixa livre, com inclinação máxima na transversal de 2% (dois por cento), junto a essas interferências; II - Onde houver a necessidade de transposição de obstáculos isolados com extensão máxima de 40 cm (quarenta centímetros), tais como postes ou árvores, deverá ser respeitada a largura mínima de 80 cm (oitenta centímetros) para a faixa livre, junto a essas interferências.\n\nFonte: cartilha_calcadas_2026.pdf (seção \"Calçadas estreitas\")"
+    },
+    {
+      "pergunta": "Quais materiais podem ser usados para construir a calçada?",
+      "tipo": "no escopo",
+      "resultado": "ok",
+      "score": 6.7,
+      "fonte_encontrada": "cartilha_calcadas_2026.pdf",
+      "resposta": "I - Concreto moldado, \"in loco\", com armadura metálica e juntas de dilatação que não provoquem vibrações; As calçadas localizadas em frente ou em área envoltória de bens tombados pelo patrimônio histórico poderão utilizar materiais distintos desde que em consonância com a legislação pertinente ao patrimônio histórico.\n\nFonte: cartilha_calcadas_2026.pdf (seção \"Materiais autorizados para a construção das calçadas\")"
+    },
+    {
+      "pergunta": "O que é o módulo de referência?",
+      "tipo": "no escopo",
+      "resultado": "ok",
+      "score": 7.09,
+      "fonte_encontrada": "cartilha_calcadas_2026.pdf",
+      "resposta": "O Módulo de Referência – MR é uma área projetada no piso, com dimensões de 0,80m por 1,20m, que corresponde ao espaço necessário para que uma pessoa em cadeira de rodas, motorizada ou não, tenha o mínimo de mobilidade. Portanto, essas dimensões devem ser usadas como referência em projetos, devendo-se considerar ainda o espaço demandado para movimentação, aproximação, transferência e rotação da cadeira de rodas.\n\nFonte: cartilha_calcadas_2026.pdf (seção \"Parâmetros antropométricos e dimensões básicas\")"
+    },
+    {
+      "pergunta": "E se a calçada for estreita demais para ter a faixa livre?",
+      "tipo": "no escopo",
+      "resultado": "ok",
+      "score": 10.46,
+      "fonte_encontrada": "cartilha_calcadas_2026.pdf",
+      "resposta": "Nos casos em que a largura total da calçada não possibilitar a implantação da faixa livre mínima de 1,20 m (um metro e vinte centímetros), e não for possível a sua ampliação, poderão ser admitidas as seguintes situações atípicas: I - Onde houver interferências de mobiliário urbano ou de guias rebaixadas para acesso de veículos, deverá ser respeitada a largura mínima de 90 cm (noventa centímetros) para a faixa livre, com inclinação máxima na transversal de 2% (dois por cento), junto a essas interferências; II - Onde houver a necessidade de transposição de obstáculos isolados com extensão máxima de 40 cm (quarenta centímetros), tais como postes ou árvores, deverá ser respeitada a largura mínima de 80 cm (oitenta centímetros) para a faixa livre, junto a essas interferências.\n\nFonte: cartilha_calcadas_2026.pdf (seção \"Calçadas estreitas\")"
+    },
+    {
+      "pergunta": "Como deve ser o rebaixamento da calçada na travessia de pedestre?",
+      "tipo": "no escopo",
+      "resultado": "ok",
+      "score": 11.08,
+      "fonte_encontrada": "cartilha_calcadas_2026.pdf",
+      "resposta": "Rebaixamento de calçada para travessia de pedestre NÃO pode haver nenhum desnível.\n\nFonte: cartilha_calcadas_2026.pdf (seção \"Tipos de rebaixamento para travessia de pedestre\")"
+    },
+    {
+      "pergunta": "Qual deve ser a inclinação transversal da calçada?",
+      "tipo": "no escopo",
+      "resultado": "ok",
+      "score": 7.07,
+      "fonte_encontrada": "cartilha_calcadas_2026.pdf",
+      "resposta": "Seja qual for a inclinação longitudinal da rua, devemos preservar a inclinação transversal máxima da faixa livre de 3% sem degraus ou rampas.\n\nFonte: cartilha_calcadas_2026.pdf (seção \"Calçadas com alta declividade\")"
+    },
+    {
+      "pergunta": "Quais problemas posso reportar no ZelaCidade?",
+      "tipo": "no escopo",
+      "resultado": "ok",
+      "score": 12.22,
+      "fonte_encontrada": "faq_zelacidade.md",
+      "resposta": "No momento o ZelaCidade aceita três tipos: buraco na via, rachadura em estrutura e calçada quebrada. Postes caídos, fiação solta e árvores em risco devem ser informados diretamente à prefeitura pelo telefone 156.\n\nFonte: faq_zelacidade.md (seção \"Quais problemas posso reportar?\")"
+    },
+    {
+      "pergunta": "Onde eu aviso sobre um poste caído?",
+      "tipo": "no escopo",
+      "resultado": "ok",
+      "score": 7.02,
+      "fonte_encontrada": "faq_zelacidade.md",
+      "resposta": "No momento o ZelaCidade aceita três tipos: buraco na via, rachadura em estrutura e calçada quebrada. Postes caídos, fiação solta e árvores em risco devem ser informados diretamente à prefeitura pelo telefone 156.\n\nFonte: faq_zelacidade.md (seção \"Quais problemas posso reportar?\")"
+    },
+    {
+      "pergunta": "O que é revisão humana?",
+      "tipo": "no escopo",
+      "resultado": "ok",
+      "score": 11.39,
+      "fonte_encontrada": "faq_zelacidade.md",
+      "resposta": "Revisão humana é a etapa em que uma pessoa confere a foto antes de o chamado seguir para a prefeitura. Ela acontece quando o modelo de visão computacional tem confiança abaixo de 60% na classificação.\n\nFonte: faq_zelacidade.md (seção \"O que é revisão humana?\")"
+    },
+    {
+      "pergunta": "O app guarda meu CPF?",
+      "tipo": "no escopo",
+      "resultado": "ok",
+      "score": 8.64,
+      "fonte_encontrada": "faq_zelacidade.md",
+      "resposta": "O ZelaCidade guarda apenas o endereço do problema, o bairro, a data e o tipo do problema. O sistema não pede nome, CPF nem telefone do cidadão. A foto deve mostrar o problema, e não pessoas ou placas de carro.\n\nFonte: faq_zelacidade.md (seção \"Meus dados ficam guardados?\")"
+    },
+    {
+      "pergunta": "Como acompanho o meu chamado?",
+      "tipo": "no escopo",
+      "resultado": "ok",
+      "score": 11.18,
+      "fonte_encontrada": "faq_zelacidade.md",
+      "resposta": "Na aba Painel de chamados aparecem todos os chamados com o status de cada um. Os status possíveis são Aberto, Revisão humana e Resolvido.\n\nFonte: faq_zelacidade.md (seção \"Como acompanho o meu chamado?\")"
+    },
+    {
+      "pergunta": "Em caso de emergência, para quem eu ligo?",
+      "tipo": "no escopo",
+      "resultado": "ok",
+      "score": 7.67,
+      "fonte_encontrada": "faq_zelacidade.md",
+      "resposta": "Não. O ZelaCidade organiza os chamados e envia um resumo para a equipe de zeladoria, mas não substitui os canais oficiais da prefeitura. Em caso de emergência, como risco de queda de estrutura, ligue para a Defesa Civil no 199.\n\nFonte: faq_zelacidade.md (seção \"O ZelaCidade substitui o 156?\")"
+    },
+    {
+      "pergunta": "O que são os alertas sonoros?",
+      "tipo": "no escopo",
+      "resultado": "ok",
+      "score": 9.54,
+      "fonte_encontrada": "faq_zelacidade.md",
+      "resposta": "Alertas sonoros são avisos visuais para pessoas surdas ou com deficiência auditiva. Um dispositivo reconhece sons como sirene e buzina e mostra o aviso na tela do celular.\n\nFonte: faq_zelacidade.md (seção \"O que são os alertas sonoros?\")"
+    },
+    {
+      "pergunta": "Qual o horário de funcionamento do metrô?",
+      "tipo": "fora do escopo",
+      "resultado": "recusou",
+      "score": 2.8,
+      "resposta": "Não encontrei essa informação nos documentos que eu conheço. Para outros serviços da prefeitura, use o SP156 (telefone 156, site ou aplicativo)."
+    },
+    {
+      "pergunta": "Como faço para tirar a segunda via do RG?",
+      "tipo": "fora do escopo",
+      "resultado": "recusou",
+      "score": 3.71,
+      "resposta": "Não encontrei essa informação nos documentos que eu conheço. Para outros serviços da prefeitura, use o SP156 (telefone 156, site ou aplicativo)."
+    },
+    {
+      "pergunta": "Quanto custa o IPTU do meu apartamento?",
+      "tipo": "fora do escopo",
+      "resultado": "recusou",
+      "score": 0.0,
+      "resposta": "Não encontrei essa informação nos documentos que eu conheço. Para outros serviços da prefeitura, use o SP156 (telefone 156, site ou aplicativo)."
+    },
+    {
+      "pergunta": "Qual o melhor time de futebol de São Paulo?",
+      "tipo": "fora do escopo",
+      "resultado": "recusou",
+      "score": 3.29,
+      "resposta": "Não encontrei essa informação nos documentos que eu conheço. Para outros serviços da prefeitura, use o SP156 (telefone 156, site ou aplicativo)."
+    },
+    {
+      "pergunta": "Como renovo minha carteira de motorista?",
+      "tipo": "fora do escopo",
+      "resultado": "recusou",
+      "score": 5.06,
+      "resposta": "Não encontrei essa informação nos documentos que eu conheço. Para outros serviços da prefeitura, use o SP156 (telefone 156, site ou aplicativo)."
+    },
+    {
+      "pergunta": "Vai chover amanhã?",
+      "tipo": "fora do escopo",
+      "resultado": "recusou",
+      "score": 0.0,
+      "resposta": "Não encontrei essa informação nos documentos que eu conheço. Para outros serviços da prefeitura, use o SP156 (telefone 156, site ou aplicativo)."
+    }
+  ]
+}

@@ -11,7 +11,7 @@ PAGINAS = [
     "A manutenção da calçada em frente ao imóvel é responsabi-\n"
     "lidade do proprietário. O proprietário deve manter o piso\n"
     "regular e sem buracos.\n"
-    "Contato: fulano@exemplo.com ou (11) 98765-4321.\n"
+    "Em caso de dúvida, o munícipe pode falar com o atendimento pelo e-mail fulano@exemplo.com ou pelo telefone (11) 98765-4321.\n"
     "1",
     "PREFEITURA DE EXEMPLO – MANUAL DE CALÇADAS\n"
     "2. FAIXA LIVRE\n"

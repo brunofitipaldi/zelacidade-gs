@@ -1,42 +1,59 @@
 {
   "documentos": {
+    "calcadas_secretaria_subprefeituras.html": {
+      "paginas": 1,
+      "secoes": 2,
+      "paragrafos": 10
+    },
+    "cartilha_calcadas_2026.pdf": {
+      "paginas": 28,
+      "secoes": 27,
+      "paragrafos": 64
+    },
     "faq_zelacidade.md": {
       "paginas": 1,
       "secoes": 8,
       "paragrafos": 8
+    },
+    "tapa_buraco_subprefeitura_ipiranga.html": {
+      "paginas": 1,
+      "secoes": 4,
+      "paragrafos": 7
     }
   },
   "limpeza": {
-    "linhas_brutas": 38,
-    "cabecalhos_rodapes_removidos": 0,
-    "numeros_de_pagina_removidos": 0,
-    "hifenizacoes_corrigidas": 0,
-    "paragrafos_duplicados_removidos": 0,
-    "trechos_curtos_removidos": 0,
+    "linhas_brutas": 1017,
+    "cabecalhos_rodapes_removidos": 104,
+    "numeros_de_pagina_removidos": 9,
+    "hifenizacoes_corrigidas": 20,
+    "paragrafos_duplicados_removidos": 6,
+    "trechos_curtos_removidos": 68,
+    "trechos_de_tabela_ou_interface_removidos": 43,
     "dados_pessoais_mascarados": {
       "[EMAIL]": 0,
       "[CPF]": 0,
-      "[TELEFONE]": 0
+      "[TELEFONE]": 2
     }
   },
   "corpus": {
     "texto_puro": {
-      "total": 8,
-      "treino": 8,
-      "validacao": 0
+      "total": 47,
+      "treino": 43,
+      "validacao": 4
     },
     "perguntas_respostas": {
-      "total": 8,
-      "treino": 8,
-      "validacao": 0
+      "total": 35,
+      "treino": 32,
+      "validacao": 3
     },
     "conversacional": {
-      "total": 8,
-      "treino": 8,
-      "validacao": 0
+      "total": 35,
+      "treino": 32,
+      "validacao": 3
     }
   },
   "origem_das_perguntas": {
-    "titulo": 8
+    "titulo": 28,
+    "regra": 7
   }
 }

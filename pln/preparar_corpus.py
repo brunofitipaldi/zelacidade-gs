@@ -65,10 +65,12 @@ def extrair_paginas(caminho: Path) -> list[str]:
         from bs4 import BeautifulSoup
 
         sopa = BeautifulSoup(caminho.read_text(encoding="utf-8", errors="ignore"), "html.parser")
-        for tag in sopa(["script", "style", "nav", "footer", "header", "aside"]):
+        for tag in sopa(["script", "style", "nav", "footer", "header", "aside", "form", "button"]):
             tag.decompose()
+        # usa só o conteúdo principal da página quando ele existe (evita menus e plugins)
+        raiz = sopa.find("article") or sopa.find("main") or sopa.body or sopa
         partes = []
-        for el in sopa.find_all(["h1", "h2", "h3", "h4", "p", "li"]):
+        for el in raiz.find_all(["h1", "h2", "h3", "h4", "p", "li"]):
             texto = el.get_text(" ", strip=True)
             if texto:
                 partes.append(("# " if el.name.startswith("h") else "") + texto)
@@ -95,7 +97,13 @@ class Estatisticas:
     hifenizacoes: int = 0
     duplicados: int = 0
     curtos: int = 0
+    ruido_numerico: int = 0
     dados_mascarados: Counter = field(default_factory=Counter)
+
+
+# Textos de interface de sites que não fazem parte do conteúdo
+LIXO_HTML = ("hand talk", "clique neste componente", "proteção de dados pessoais a secretaria",
+             "quem é quem", "acesso à informação", "compartilhe")
 
 
 def normalizar(texto: str) -> str:
@@ -110,13 +118,17 @@ def remover_repetidas(paginas: list[str], est: Estatisticas) -> list[list[str]]:
     """Remove linhas que se repetem em várias páginas (cabeçalho/rodapé) e números de página."""
     linhas_por_pagina = [[l.strip() for l in p.splitlines()] for p in paginas]
     est.linhas_brutas += sum(len(l) for l in linhas_por_pagina)
-    contagem = Counter(l for pag in linhas_por_pagina for l in set(pag) if l)
+
+    def chave(l: str) -> str:  # "SEÇÃO | 01" e "SEÇÃO | 02" contam como a mesma linha
+        return re.sub(r"\d+", "#", l)
+
+    contagem = Counter(chave(l) for pag in linhas_por_pagina for l in set(pag) if l)
     limite = max(3, len(paginas) // 2) if len(paginas) >= 3 else None
     resultado = []
     for pag in linhas_por_pagina:
         mantidas = []
         for l in pag:
-            if limite and l and contagem[l] >= limite and len(l) < 120:
+            if limite and l and contagem[chave(l)] >= limite and len(l) < 120:
                 est.cabecalhos_rodapes += 1
                 continue
             if RE_PAGINA.match(l):
@@ -127,13 +139,25 @@ def remover_repetidas(paginas: list[str], est: Estatisticas) -> list[list[str]]:
     return resultado
 
 
+def proporcao_letras(texto: str) -> float:
+    sem_espaco = re.sub(r"\s", "", texto)
+    return sum(c.isalpha() for c in sem_espaco) / max(1, len(sem_espaco))
+
+
+def titulo_valido(titulo: str) -> bool:
+    """Descarta 'títulos' que são pedaços de diagrama ou tabela (ex.: '1,5L2', '> 3,80 min')."""
+    palavras = [p for p in re.findall(r"[A-Za-zÀ-ú]+", titulo) if len(p) >= 3]
+    return len(palavras) >= 1 and proporcao_letras(titulo) >= 0.75 and "|" not in titulo
+
+
 def parece_titulo(linha: str) -> bool:
     if linha.startswith("#"):
-        return True
+        return titulo_valido(linha.lstrip("# "))
     sem_numero = re.sub(r"^\d+(\.\d+)*[.)]?\s+", "", linha)
     curta = 3 <= len(sem_numero) <= 80
     sem_ponto_final = not sem_numero.endswith((".", ";", ",", ":"))
-    return curta and sem_ponto_final and (sem_numero.isupper() or sem_numero.endswith("?") or sem_numero != linha)
+    formato = sem_numero.isupper() or sem_numero.endswith("?") or sem_numero != linha
+    return curta and sem_ponto_final and formato and titulo_valido(sem_numero)
 
 
 def montar_secoes(linhas: list[str], est: Estatisticas) -> list[tuple[str, list[str]]]:
@@ -153,7 +177,7 @@ def montar_secoes(linhas: list[str], est: Estatisticas) -> list[tuple[str, list[
         if parece_titulo(linha):
             fechar_paragrafo()
             titulo = re.sub(r"^#+\s*", "", linha)
-            titulo = re.sub(r"^\d+(\.\d+)*[.)]?\s+", "", titulo).strip()
+            titulo = re.sub(r"^\d+(\.\d+)*[.)]?\s+", "", titulo).strip().rstrip("!:")
             if titulo.isupper():
                 titulo = titulo.capitalize()
             secoes.append((titulo, []))
@@ -194,6 +218,13 @@ def limpar_paragrafos(secoes, est: Estatisticas, vistos: set[str]):
             if len(p) < 30:
                 est.curtos += 1
                 continue
+            # trechos de tabela ou cota de desenho: muitos números e poucas palavras
+            if proporcao_letras(p) < 0.70 or len(re.findall(r"[A-Za-zÀ-ú]{3,}", p)) < 6:
+                est.ruido_numerico += 1
+                continue
+            if any(lixo in p.lower() for lixo in LIXO_HTML):
+                est.ruido_numerico += 1
+                continue
             chave = re.sub(r"\W+", "", p.lower())
             if chave in vistos:
                 est.duplicados += 1
@@ -210,7 +241,9 @@ def limpar_paragrafos(secoes, est: Estatisticas, vistos: set[str]):
 # ---------------------------------------------------------------------------
 
 RE_DEFINICAO = re.compile(r"^(?P<termo>[A-ZÀ-Ú][\wÀ-ú\s-]{2,40}?)\s+(?P<verbo>é|são)\s+(?P<resto>.{20,})$")
-PRONOMES = {"ele", "ela", "eles", "elas", "isso", "isto", "este", "esta", "esse", "essa", "aquele", "aquela", "o", "a", "os", "as", "que", "não"}
+PRONOMES = {"ele", "ela", "eles", "elas", "isso", "isto", "este", "esta", "esse", "essa", "aquele", "aquela",
+            "o", "a", "os", "as", "que", "não", "somente", "apenas", "também", "quando", "se", "para",
+            "na", "no", "nas", "nos", "em", "já", "ainda", "sempre", "nunca", "aqui", "lá"}
 RE_REGRA = re.compile(r"\b(deve|devem|é obrigatório|é obrigatória|é proibido|é proibida|não pode|não podem)\b", re.I)
 
 
@@ -252,8 +285,11 @@ def gerar_perguntas(docs) -> list[dict]:
                 pergunta = f"O que o documento \"{nome}\" diz sobre {titulo[0].lower() + titulo[1:]}?"
             else:
                 pergunta = None
-            if pergunta:
-                pares.append({"pergunta": pergunta, "resposta": cortar(" ".join(paragrafos[:2])),
+            # a resposta usa os primeiros parágrafos que são texto corrido (não legenda de figura)
+            corridos = [p for p in paragrafos if proporcao_letras(p) >= 0.80 and len(frases(p)) >= 1
+                        and re.search(r"[.!?;:]", p)]
+            if pergunta and corridos:
+                pares.append({"pergunta": pergunta, "resposta": cortar(" ".join(corridos[:2])),
                               "fonte": fonte, "origem": "titulo"})
             # 2) Definições do tipo "X é ..." (ignora frases que começam com pronome ou artigo
             #    e termos que já são o assunto do título da seção)
@@ -346,6 +382,7 @@ def main(entrada: Path = ENTRADA_PADRAO, saida: Path = SAIDA_PADRAO) -> dict:
             "hifenizacoes_corrigidas": est.hifenizacoes,
             "paragrafos_duplicados_removidos": est.duplicados,
             "trechos_curtos_removidos": est.curtos,
+            "trechos_de_tabela_ou_interface_removidos": est.ruido_numerico,
             "dados_pessoais_mascarados": dict(est.dados_mascarados),
         },
         "corpus": {

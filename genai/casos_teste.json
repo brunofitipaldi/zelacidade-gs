@@ -1,0 +1,26 @@
+{
+  "descricao": "Perguntas de teste do assistente. 'fonte' é o arquivo que deveria ser encontrado; 'palavras' são termos que precisam aparecer na resposta. Perguntas com 'fora_do_escopo' devem ser recusadas.",
+  "casos": [
+    {"pergunta": "Como eu peço o conserto de um buraco na rua?", "fonte": "tapa_buraco", "palavras": ["SP156"]},
+    {"pergunta": "O que preciso informar quando pedir o tapa-buraco?", "fonte": "tapa_buraco", "palavras": ["endereço"]},
+    {"pergunta": "Qual a largura mínima da faixa livre da calçada?", "fonte": "cartilha", "palavras": ["1,20"]},
+    {"pergunta": "Quais materiais podem ser usados para construir a calçada?", "fonte": "cartilha", "palavras": ["concreto"]},
+    {"pergunta": "O que é o módulo de referência?", "fonte": "cartilha", "palavras": ["0,80"]},
+    {"pergunta": "E se a calçada for estreita demais para ter a faixa livre?", "fonte": "cartilha", "palavras": ["90 cm"]},
+    {"pergunta": "Como deve ser o rebaixamento da calçada na travessia de pedestre?", "fonte": "cartilha", "palavras": ["desnível"]},
+    {"pergunta": "Qual deve ser a inclinação transversal da calçada?", "fonte": "cartilha", "palavras": ["inclinação transversal"]},
+    {"pergunta": "Quais problemas posso reportar no ZelaCidade?", "fonte": "faq", "palavras": ["buraco"]},
+    {"pergunta": "Onde eu aviso sobre um poste caído?", "fonte": "faq", "palavras": ["156"]},
+    {"pergunta": "O que é revisão humana?", "fonte": "faq", "palavras": ["confiança"]},
+    {"pergunta": "O app guarda meu CPF?", "fonte": "faq", "palavras": ["CPF"]},
+    {"pergunta": "Como acompanho o meu chamado?", "fonte": "faq", "palavras": ["Painel"]},
+    {"pergunta": "Em caso de emergência, para quem eu ligo?", "fonte": "faq", "palavras": ["199"]},
+    {"pergunta": "O que são os alertas sonoros?", "fonte": "faq", "palavras": ["surdas"]},
+    {"pergunta": "Qual o horário de funcionamento do metrô?", "fora_do_escopo": true},
+    {"pergunta": "Como faço para tirar a segunda via do RG?", "fora_do_escopo": true},
+    {"pergunta": "Quanto custa o IPTU do meu apartamento?", "fora_do_escopo": true},
+    {"pergunta": "Qual o melhor time de futebol de São Paulo?", "fora_do_escopo": true},
+    {"pergunta": "Como renovo minha carteira de motorista?", "fora_do_escopo": true},
+    {"pergunta": "Vai chover amanhã?", "fora_do_escopo": true}
+  ]
+}

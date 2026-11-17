@@ -6,10 +6,16 @@ Rodar a partir da raiz do projeto:
 
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
 import plotly.express as px
 import streamlit as st
 
 import dados
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "genai"))
+from assistente import Assistente  # noqa: E402
 
 st.set_page_config(page_title="ZelaCidade", page_icon="🏙️", layout="wide")
 
@@ -20,6 +26,11 @@ CORES_STATUS = {"Aberto": "#E69F00", "Revisão humana": "#0072B2", "Resolvido": 
 @st.cache_data(ttl=30)
 def carregar() -> "dados.pd.DataFrame":
     return dados.listar_chamados()
+
+
+@st.cache_resource
+def carregar_assistente() -> Assistente:
+    return Assistente()
 
 
 st.title("ZelaCidade")
@@ -117,7 +128,25 @@ with aba_painel:
 # --- Assistente -------------------------------------------------------------
 with aba_assistente:
     st.subheader("Assistente de serviços públicos")
-    st.info("Em construção: o assistente vai responder com base nos documentos tratados pelo módulo de PLN.")
+    st.caption(
+        "Responde com base na Cartilha de Calçadas 2026, em páginas da Prefeitura de SP e no FAQ do "
+        "ZelaCidade. Quando não encontra a resposta nos documentos, ele avisa em vez de inventar. "
+        "Não substitui o atendimento oficial do SP156."
+    )
+    assistente = carregar_assistente()
+    if "conversa" not in st.session_state:
+        st.session_state.conversa = []
+    for papel, texto, meta in st.session_state.conversa:
+        with st.chat_message(papel):
+            st.markdown(texto)
+            if meta:
+                st.caption(meta)
+    pergunta = st.chat_input("Ex.: Qual a largura mínima da calçada?")
+    if pergunta:
+        r = assistente.perguntar(pergunta)
+        meta = f"Modo: {r['modo']} · relevância do trecho: {r['score']}"
+        st.session_state.conversa += [("user", pergunta, ""), ("assistant", r["resposta"], meta)]
+        st.rerun()
 
 # --- Alertas ----------------------------------------------------------------
 with aba_alertas:
