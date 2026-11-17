@@ -5,3 +5,5 @@ data/*.db
 rpa/saida/
 .env
 .claude/
+data/visao_dataset/
+visao/cache/

@@ -14,7 +14,9 @@ TIPOS = {
     "buraco": "Buraco na via",
     "rachadura": "Rachadura em estrutura",
     "calcada_quebrada": "Calçada quebrada",
+    "desgaste_asfalto": "Desgaste do asfalto",
 }
+LIMIAR_REVISAO = 0.60  # confiança da visão abaixo disso: chamado vai para revisão humana
 STATUS = {
     "aberto": "Aberto",
     "revisao_humana": "Revisão humana",
@@ -48,18 +50,23 @@ def listar_chamados() -> pd.DataFrame:
 
 
 def registrar_chamado(tipo: str, endereco: str, bairro: str, confianca: float | None = None) -> str:
-    """Grava um chamado vindo do app e devolve o id gerado."""
+    """Grava um chamado vindo do app e devolve o id gerado.
+
+    `confianca` é a confiança da visão computacional; fica vazia quando o próprio cidadão
+    escolheu o tipo. Abaixo de LIMIAR_REVISAO o chamado entra em revisão humana.
+    """
     if tipo not in TIPOS:
         raise ValueError(f"Tipo inválido: {tipo}")
     if not endereco.strip():
         raise ValueError("Endereço é obrigatório")
+    status = "revisao_humana" if confianca is not None and confianca < LIMIAR_REVISAO else "aberto"
     agora = datetime.now()
     id_foto = "APP" + agora.strftime("%Y%m%d%H%M%S")
     with _conectar() as con:
         con.execute(
             "INSERT INTO chamados VALUES (?,?,?,?,?,?,?)",
             (id_foto, agora.strftime("%Y-%m-%d %H:%M"), tipo, confianca,
-             endereco.strip(), bairro.strip(), "aberto"),
+             endereco.strip(), bairro.strip(), status),
         )
     return id_foto
 

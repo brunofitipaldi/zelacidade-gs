@@ -1,0 +1,155 @@
+{
+  "observacao": "Coordenadas aproximadas dos bairros e distância em linha reta. Nenhum hardware quântico foi usado.",
+  "classico_8_chamados": {
+    "forca_bruta": {
+      "km": 24.86,
+      "segundos": 0.2372,
+      "rota": [
+        "Base – Subprefeitura Sé",
+        "Liberdade",
+        "Bela Vista",
+        "Consolação",
+        "Pinheiros",
+        "Vila Mariana",
+        "Mooca",
+        "Brás",
+        "República",
+        "Base – Subprefeitura Sé"
+      ],
+      "rotas_testadas": 40320
+    },
+    "vizinho_mais_proximo": {
+      "km": 28.65,
+      "segundos": 0.0001,
+      "rota": [
+        "Base – Subprefeitura Sé",
+        "Liberdade",
+        "Bela Vista",
+        "Consolação",
+        "República",
+        "Brás",
+        "Mooca",
+        "Vila Mariana",
+        "Pinheiros",
+        "Base – Subprefeitura Sé"
+      ],
+      "diferenca_para_otimo_pct": 15.2
+    }
+  },
+  "qubo": [
+    {
+      "chamados": 4,
+      "qubits": 16,
+      "otimo_classico_km": 7.01,
+      "enumeracao_completa": {
+        "combinacoes": 65536,
+        "segundos": 0.0937,
+        "energia": 7.01,
+        "rota": [
+          "Base – Subprefeitura Sé",
+          "República",
+          "Consolação",
+          "Bela Vista",
+          "Liberdade",
+          "Base – Subprefeitura Sé"
+        ],
+        "igual_ao_otimo": true
+      },
+      "recozimento_simulado": {
+        "segundos": 4.0415,
+        "valida": true,
+        "km": 7.01,
+        "rota": [
+          "Base – Subprefeitura Sé",
+          "Liberdade",
+          "Bela Vista",
+          "Consolação",
+          "República",
+          "Base – Subprefeitura Sé"
+        ],
+        "igual_ao_otimo": true
+      }
+    },
+    {
+      "chamados": 6,
+      "qubits": 36,
+      "otimo_classico_km": 13.88,
+      "recozimento_simulado": {
+        "segundos": 3.8583,
+        "valida": true,
+        "km": 13.88,
+        "rota": [
+          "Base – Subprefeitura Sé",
+          "República",
+          "Consolação",
+          "Bela Vista",
+          "Liberdade",
+          "Mooca",
+          "Brás",
+          "Base – Subprefeitura Sé"
+        ],
+        "igual_ao_otimo": true
+      }
+    },
+    {
+      "chamados": 8,
+      "qubits": 64,
+      "otimo_classico_km": 24.86,
+      "recozimento_simulado": {
+        "segundos": 3.8642,
+        "valida": true,
+        "km": 25.63,
+        "rota": [
+          "Base – Subprefeitura Sé",
+          "República",
+          "Consolação",
+          "Pinheiros",
+          "Bela Vista",
+          "Liberdade",
+          "Vila Mariana",
+          "Mooca",
+          "Brás",
+          "Base – Subprefeitura Sé"
+        ],
+        "igual_ao_otimo": false
+      }
+    }
+  ],
+  "crescimento": [
+    {
+      "chamados": 5,
+      "rotas_possiveis": "120",
+      "qubits_qubo": 25
+    },
+    {
+      "chamados": 8,
+      "rotas_possiveis": "4.03e+04",
+      "qubits_qubo": 64
+    },
+    {
+      "chamados": 10,
+      "rotas_possiveis": "3.63e+06",
+      "qubits_qubo": 100
+    },
+    {
+      "chamados": 15,
+      "rotas_possiveis": "1.31e+12",
+      "qubits_qubo": 225
+    },
+    {
+      "chamados": 20,
+      "rotas_possiveis": "2.43e+18",
+      "qubits_qubo": 400
+    },
+    {
+      "chamados": 30,
+      "rotas_possiveis": "2.65e+32",
+      "qubits_qubo": 900
+    },
+    {
+      "chamados": 50,
+      "rotas_possiveis": "3.04e+64",
+      "qubits_qubo": 2500
+    }
+  ]
+}

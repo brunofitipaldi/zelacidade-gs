@@ -1,0 +1,16 @@
+teste,som_tocado,modelo_respondeu,acertou
+1,ruido,ruido,sim
+2,sirene,sirene,sim
+3,buzina,buzina,sim
+4,ruido,ruido,sim
+5,ruido,ruido,sim
+6,ruido,ruido,sim
+7,ruido,ruido,sim
+8,sirene,sirene,sim
+9,sirene,ruido,nao
+10,sirene,ruido,nao
+11,sirene,sirene,sim
+12,buzina,ruido,nao
+13,buzina,sirene,nao
+14,buzina,buzina,sim
+15,buzina,buzina,sim

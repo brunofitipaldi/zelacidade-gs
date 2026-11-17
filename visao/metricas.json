@@ -1,0 +1,75 @@
+{
+  "dataset": "Multiclass Road Surface Damage Classification Dataset (Mendeley Data, doi 10.17632/697w4jkr2x.2)",
+  "modelo": "MobileNetV3-Small (ImageNet, congelada) + camada linear",
+  "limpeza": {
+    "imagens_no_dataset": 1530,
+    "copias_repetidas_removidas": 186,
+    "fotos_com_rotulo_contraditorio_removidas": 44,
+    "imagens_usadas": 1256,
+    "grupos_de_fotos_quase_iguais": 22,
+    "fotos_quase_iguais_com_rotulos_diferentes_removidas": 17
+  },
+  "divisao": {
+    "treino": 866,
+    "validacao": 186,
+    "teste": 187
+  },
+  "treino": {
+    "acuracia_validacao": 0.8656,
+    "weight_decay": 0.01
+  },
+  "teste": {
+    "acuracia": 0.8503,
+    "por_classe": {
+      "buraco": {
+        "precisao": 0.898,
+        "revocacao": 0.846,
+        "f1": 0.871,
+        "fotos_no_teste": 52
+      },
+      "rachadura": {
+        "precisao": 0.803,
+        "revocacao": 0.968,
+        "f1": 0.878,
+        "fotos_no_teste": 63
+      },
+      "desgaste_asfalto": {
+        "precisao": 0.871,
+        "revocacao": 0.75,
+        "f1": 0.806,
+        "fotos_no_teste": 72
+      }
+    },
+    "matriz_confusao": {
+      "linhas_real_colunas_previsto": [
+        "buraco",
+        "rachadura",
+        "desgaste_asfalto"
+      ],
+      "valores": [
+        [
+          44,
+          2,
+          6
+        ],
+        [
+          0,
+          61,
+          2
+        ],
+        [
+          5,
+          13,
+          54
+        ]
+      ]
+    },
+    "limiar_revisao_humana": {
+      "limiar": 0.6,
+      "fotos_para_revisao": 7,
+      "acuracia_nas_fotos_acima_do_limiar": 0.8722,
+      "acuracia_nas_fotos_abaixo_do_limiar": 0.2857
+    },
+    "tempo_por_foto_ms_cpu": 41.5
+  }
+}

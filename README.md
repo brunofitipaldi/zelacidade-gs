@@ -17,10 +17,10 @@ Autor: Bruno Lanchariche Fitipaldi Lopes – RM 564129
 | `rpa/` | AI for Robotic Process Automation | Trata as detecções com Pandas, grava no SQLite e gera o e-mail para a prefeitura | Em desenvolvimento |
 | `pln/` | PLN, Chatbots & Virtual Agents | Limpa documentos e gera os 3 corpus | Pronto |
 | `genai/` | Generative AI & Advanced Nets | Assistente que responde com base no corpus | Pronto e integrado ao app |
-| `visao/` | Visão Computacional | Classifica fotos de problemas urbanos | A fazer |
-| `quantica/` | Computação Quântica & IA | Roadmap e exemplo de otimização de rota | A fazer |
+| `visao/` | Visão Computacional | Classifica a foto em buraco, rachadura ou desgaste do asfalto (85% no teste) | Pronto e integrado ao app |
+| `quantica/` | Computação Quântica & IA | Rota das equipes: força bruta × heurística × formulação QUBO, e roadmap | Pronto |
 | `cluster/` | Cluster Computing | Simulação no iSPD | A fazer |
-| `iot/` | Physical Computing & IoT | Reconhecimento de sons no Edge Impulse | A fazer |
+| `iot/` | Physical Computing & IoT | Reconhecimento de sons no Edge Impulse (sirene, buzina, ruído) | Pronto e integrado ao app |
 | `docs/` | Governança em IA | Relatório, prints e link do vídeo | A fazer |
 
 ## Como rodar
@@ -28,7 +28,7 @@ Autor: Bruno Lanchariche Fitipaldi Lopes – RM 564129
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
-pip install -r requirements.txt
+pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
 python rpa/rpa_chamados.py
 streamlit run app/app.py
 ```
@@ -44,3 +44,7 @@ Documentos em `docs_fonte/` (públicos, baixados em 16/11/2026):
 - "Operação Tapa-Buraco no Ipiranga: saiba como solicitar o serviço" – Subprefeitura Ipiranga
 - Página "Calçadas" – Secretaria Municipal das Subprefeituras
 - FAQ do ZelaCidade – escrito pela equipe do projeto
+
+Fotos para a visão computacional: *Multiclass Road Surface Damage Classification Dataset* (Mendeley
+Data, doi 10.17632/697w4jkr2x.2), baixado em 17/11/2026. Fica em `data/visao_dataset/` e não vai para
+o repositório; veja `visao/README.md` para baixar e treinar de novo.

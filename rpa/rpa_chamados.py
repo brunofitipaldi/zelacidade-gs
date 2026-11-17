@@ -28,7 +28,7 @@ CSV_PADRAO = RAIZ / "data" / "deteccoes_exemplo.csv"
 BANCO = RAIZ / "data" / "zelacidade.db"
 SAIDA = Path(__file__).resolve().parent / "saida"
 
-TIPOS_VALIDOS = {"buraco", "rachadura", "calcada_quebrada"}
+TIPOS_VALIDOS = {"buraco", "rachadura", "calcada_quebrada", "desgaste_asfalto"}
 CONFIANCA_MINIMA = 0.60  # abaixo disso o chamado vai para revisão humana
 
 logging.basicConfig(
