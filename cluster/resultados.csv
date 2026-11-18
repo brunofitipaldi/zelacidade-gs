@@ -1,0 +1,15 @@
+grupo,cenario,descricao,nos,escalonador,banda_mbps,nos_desiguais,tempo_total_s,ociosidade_processamento_pct,ociosidade_comunicacao_pct,speedup_vs_2_nos,eficiencia_pct,diferenca_vs_referencia_pct
+A,C1,"1 cluster, 2 nós",2,RoundRobin,1000,nao,22.0097,43.1868,33.4047,1.0,100.0,
+A,C2,"1 cluster, 4 nós",4,RoundRobin,1000,nao,22.0267,71.6139,33.4069,0.999,50.0,
+A,C3,"1 cluster, 8 nós",8,RoundRobin,1000,nao,22.0233,85.7981,33.4076,0.999,25.0,
+A,C4,"1 cluster, 8 nós",8,Workqueue,1000,nao,22.0521,85.8459,33.4723,0.998,25.0,
+B,C5,"1 cluster, 2 nós",2,RoundRobin,10000,nao,12.5439,0.449874,78.7459,1.0,100.0,
+B,C6,"1 cluster, 4 nós",4,RoundRobin,10000,nao,6.29986,0.895226,57.6914,1.991,99.6,
+B,C7,"1 cluster, 8 nós",8,RoundRobin,10000,nao,4.00795,21.9666,33.4052,3.13,78.2,
+B,C8,"1 cluster, 8 nós",8,Workqueue,10000,nao,4.57983,31.61,41.7795,2.739,68.5,
+C,C9,2 clusters iguais (4+4 rápidos),8,RoundRobin,1000,nao,11.0519,71.6846,33.6685,,,0.0
+C,C10,2 clusters desiguais (4 rápidos + 4 lentos),8,RoundRobin,1000,sim,11.0615,57.6437,33.7432,,,0.1
+C,C11,2 clusters desiguais (4 rápidos + 4 lentos),8,Workqueue,1000,sim,12.5226,63.7438,41.4596,,,13.3
+D,C12,2 clusters iguais (4+4 rápidos),8,RoundRobin,10000,nao,3.1913,2.07398,58.2336,,,0.0
+D,C13,2 clusters desiguais (4 rápidos + 4 lentos),8,RoundRobin,10000,sim,6.32504,25.9686,78.9387,,,98.2
+D,C14,2 clusters desiguais (4 rápidos + 4 lentos),8,Workqueue,10000,sim,5.39288,20.9145,75.2568,,,69.0

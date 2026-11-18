@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE system SYSTEM "iSPD.dtd">
+<system version="1.2">
+    <owner id="user1"/>
+    <machine id="mestre" load="0.0" owner="user1" power="10000.0">
+        <master scheduler="Workqueue">
+            <slave id="1"/>
+        </master>
+        <position x="420" y="150"/>
+        <icon_id global="0" local="0"/>
+        <characteristic>
+            <process number="1" power="10000.0"/>
+            <memory size="0.0"/>
+            <hard_disk size="0.0"/>
+        </characteristic>
+    </machine>
+    <cluster bandwidth="1000.0" id="cluster1" latency="0.001" master="false" nodes="8" owner="user1" power="10000.0" scheduler="---">
+        <position x="195" y="100"/>
+        <icon_id global="1" local="1"/>
+        <characteristic>
+            <process number="1" power="10000.0"/>
+            <memory size="0.0"/>
+            <hard_disk size="0.0"/>
+        </characteristic>
+    </cluster>
+    <link bandwidth="1000.0" id="link2" latency="0.001" load="0.0">
+        <connect destination="1" origination="0"/>
+        <position x="420" y="150"/>
+        <position x="195" y="100"/>
+        <icon_id global="2" local="0"/>
+    </link>
+    <link bandwidth="1000.0" id="link3" latency="0.001" load="0.0">
+        <connect destination="0" origination="1"/>
+        <position x="420" y="150"/>
+        <position x="195" y="100"/>
+        <icon_id global="3" local="1"/>
+    </link>
+    <load>
+        <random tasks="1000" time_arrival="0">
+            <size average="300" maximum="400" minimum="200" probability="50.0" type="computing"/>
+            <size average="24" maximum="32" minimum="16" probability="50.0" type="communication"/>
+        </random>
+    </load>
+</system>

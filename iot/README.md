@@ -18,11 +18,12 @@ avise a pessoa surda por vibração ou alerta visual quando ouvir uma sirene ou 
 | --- | --- | --- |
 | Validação (durante o treino) | 92,9% | Janelas tiradas das mesmas gravações do treino, por isso é otimista |
 | Model testing (conjunto de teste) | 76,84% | Gravações que o modelo não viu; F1: buzina 0,82, ruído 0,43, sirene 0,88 |
-| 15 testes ao vivo | 73,3% (11/15) | Sons novos tocados perto do microfone, ver abaixo |
+| 15 testes ao vivo | 73,3% (11/15) | Sons tocados perto do microfone, 5 por classe, ver abaixo |
 
 ### Testes ao vivo
 
-Feitos no navegador (Deployment > Launch in browser), com sons que não foram usados no treino.
+Feitos no navegador (Deployment > Launch in browser), tocando cada som por cerca de 5 segundos
+perto do microfone e anotando a classe que venceu.
 Detalhe em `testes_ao_vivo.csv`.
 
 | Som tocado ↓ / Modelo respondeu → | buzina | ruído | sirene | Acertos |

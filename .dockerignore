@@ -1,0 +1,14 @@
+.git
+.venv
+.claude
+__pycache__
+*.pyc
+.env
+data/*.db
+data/visao_dataset
+visao/cache
+rpa/saida
+docs_fonte
+cluster/modelos
+cluster/*.wmsx
+cluster/*.imsx
