@@ -7,7 +7,8 @@ avise a pessoa surda por vibração ou alerta visual quando ouvir uma sirene ou 
 ## Como foi feito
 
 - **Coleta:** amostras de 10 s gravadas com o microfone do celular, cerca de 2 min por classe.
-  Sirene e buzina vieram de vídeos tocados em caixa de som; ruído é o som do ambiente.
+  Sirene e buzina vieram de vídeos tocados em caixa de som, com tipos variados (ambulância e polícia;
+  carro e moto); ruído é o som do ambiente.
 - **Divisão:** 80% treino / 20% teste (Perform train/test split do Edge Impulse).
 - **Impulse:** janela de 1000 ms com passo de 500 ms, bloco **Audio (MFE)** e bloco **Classification**
   (rede neural, 100 ciclos de treino, configuração padrão).
@@ -18,7 +19,7 @@ avise a pessoa surda por vibração ou alerta visual quando ouvir uma sirene ou 
 | --- | --- | --- |
 | Validação (durante o treino) | 92,9% | Janelas tiradas das mesmas gravações do treino, por isso é otimista |
 | Model testing (conjunto de teste) | 76,84% | Gravações que o modelo não viu; F1: buzina 0,82, ruído 0,43, sirene 0,88 |
-| 15 testes ao vivo | 73,3% (11/15) | Sons tocados perto do microfone, 5 por classe, ver abaixo |
+| 15 testes ao vivo | 73,3% (11/15) | 5 por classe, com os mesmos vídeos do treino, ver abaixo |
 
 ### Testes ao vivo
 
@@ -39,11 +40,13 @@ Detalhe em `testes_ao_vivo.csv`.
   esse é o erro mais grave, porque significa um alerta que não chegou.
 - Causa provável: trechos de silêncio dentro das amostras de sirene e buzina (início dos vídeos, pausa
   entre buzinadas), que o Feature explorer mostra misturados com o ruído, e pouco dado (~2 min por classe).
-- Os testes ao vivo (73,3%) ficaram próximos do Model testing (76,84%), o que indica que o número do
-  teste representa bem o uso real. Ainda assim, 15 testes é uma amostra pequena.
+- Os testes ao vivo usaram os mesmos vídeos das gravações de treino, então não medem o desempenho com
+  sons novos; a medida independente é a do Model testing (76,84%). Mesmo com sons conhecidos o modelo
+  errou 4 de 15, e 15 testes é uma amostra pequena.
 
 ## Melhorias possíveis
 
+- Refazer os testes ao vivo com vídeos que não entraram no treino, para medir o uso real.
 - Cortar os silêncios das amostras de sirene e buzina (Crop sample) e treinar de novo.
 - Gravar mais dados, com sirenes e buzinas variadas e em ambientes diferentes (rua, chuva, trânsito).
 - Usar um limiar de confiança menor para sirene: é melhor um alarme falso do que um alerta perdido.
